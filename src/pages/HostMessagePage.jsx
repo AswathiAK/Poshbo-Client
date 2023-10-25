@@ -333,7 +333,7 @@ const HostMessagePage = () => {
   };
   
   useEffect(() => {
-    socket.current = io("http://localhost:4000");
+    socket.current = io("https://www.mollacart.online");
     socket.current.emit("addNewUser", user._id);
     socket.current.on("getOnlineUsers", (users) => {
       setOnlineUsers(users);
