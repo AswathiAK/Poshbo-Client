@@ -41,7 +41,7 @@ const RegisterPage = () => {
       setConfirmOtp(otpResult);
       setShowOtpPage(true);
     } catch (error) {
-      const errorMessage = error.response?.data?.message ?? error.response?.statusText ?? error.message; console.log(errorMessage);
+      const errorMessage = error.response?.data?.message ?? error.response?.statusText ?? error.message; 
       toast.error(errorMessage, {
         position: toast.POSITION.TOP_CENTER,
         transition: Flip,

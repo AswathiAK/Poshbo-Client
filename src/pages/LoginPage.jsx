@@ -27,7 +27,7 @@ const LoginPage = () => {
   const userLogin = async (values, action) => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const { data } = await axios.post('/users/login', values); 
+      const { data } = await axios.post('/users/login', values); console.log('data=',data);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       toast.success(data.message, {
         position: toast.POSITION.TOP_CENTER,
