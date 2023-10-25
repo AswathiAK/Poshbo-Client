@@ -14,6 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import LogoutIcon from '@mui/icons-material/Person';
 import { AuthContext } from '../context/AuthContext';
 import axios from "../services/axios";
+import Cookies from 'js-cookie';
 
 const ProfileMenu = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -35,6 +36,7 @@ const ProfileMenu = () => {
   const userLogout = async () => {
     try {
       const { data } = await axios.post('/users/logout'); 
+      Cookies.remove('userToken');
       toast.success(data.message, {
         position: toast.POSITION.TOP_CENTER,
         transition: Flip,

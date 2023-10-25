@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Avatar, Stack } from '@mui/material';
 import { AuthContext } from '../context/AuthContext';
 import axios from "../services/axios";
+import Cookies from 'js-cookie';
 
 const HostAccountMenu = () => {
   const { user, dispatch } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const HostAccountMenu = () => {
   const userLogout = async () => {
     try {
       const { data } = await axios.post('/users/logout'); 
+      Cookies.remove('userToken');
       toast.success(data.message, {
         position: toast.POSITION.TOP_CENTER,
         transition: Flip,

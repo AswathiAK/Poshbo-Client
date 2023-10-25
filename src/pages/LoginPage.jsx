@@ -7,6 +7,7 @@ import axios from "../services/axios";
 import usePasswordToggle from '../hooks/usePasswordToggle';
 import { AuthContext } from '../context/AuthContext';
 import { Footer, UserHeader } from '../components';
+import Cookies from "js-cookie";
 
 const LoginPage = () => {  
   const { user, dispatch } = useContext(AuthContext);
@@ -27,7 +28,8 @@ const LoginPage = () => {
   const userLogin = async (values, action) => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const { data } = await axios.post('/users/login', values); console.log('data=',data);
+      const { data } = await axios.post('/users/login', values); console.log('data=', data);
+      Cookies.set('userToken', data.token);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       toast.success(data.message, {
         position: toast.POSITION.TOP_CENTER,
