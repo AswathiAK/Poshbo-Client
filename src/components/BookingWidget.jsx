@@ -357,7 +357,7 @@ const BookingWidget = ({hotel}) => {
             price: total,
             bookingData
           };
-          const response = await axios.post(`/bookings/${user._id}/create-checkout-session`,stripeData); 
+          const response = await axios.post(`/bookings/${user._id}/create-checkout-session`,stripeData); console.log('response',response);
           const session = response.data.id; 
           const result = stripe.redirectToCheckout({
             sessionId: session
